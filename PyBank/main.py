@@ -43,3 +43,18 @@ print(f"Total: ${total_profit}")
 print(f"Average Change: ${average_change}")
 print(f"Greatest Increase in Profits: {profit_month} (${greatest_profit})")
 print(f"Greatest Decrease in Profits: {loss_month} (${greatest_loss})")
+
+# Redoing all the print statements into output file
+output_path = os.path.join("Results.csv")
+
+with open(output_path, 'w', newline='') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile)
+
+    csvwriter.writerow([f"Total months: {total_months}"])
+    csvwriter.writerow([f"Total: ${total_profit}"])
+    csvwriter.writerow([f"Average Change: ${average_change}"])
+    csvwriter.writerow([f"Greatest Increase in Profits: {profit_month} (${greatest_profit})"])
+    csvwriter.writerow([f"Greatest Decrease in Profits: {loss_month} (${greatest_loss})"])
+
