@@ -46,5 +46,20 @@ with open(csvpath) as csvfile:
 place = vote_list.index(winner)
 print(f"Winner: {candidate_list[place]}")       
 
+# Redoing all the print statements into output file
+output_path = os.path.join("Results.csv")
 
+with open(output_path, 'w', newline='') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile)
+
+    csvwriter.writerow(["Election Results"])
         
+    csvwriter.writerow([f"Total Votes: {total_votes}"])
+    for name in candidate_list:
+        position = candidate_list.index(name)
+        csvwriter.writerow([f"{candidate_list[position]}: {percent_won[position]}% ({vote_list[position]})"])
+
+    place = vote_list.index(winner)
+    csvwriter.writerow([f"Winner: {candidate_list[place]}"]) 
