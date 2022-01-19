@@ -3,8 +3,6 @@ import csv
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-total_months = 0
-total_profit = 0
 average_change = 0
 
 with open(csvpath) as csvfile:
@@ -14,10 +12,13 @@ with open(csvpath) as csvfile:
     # Gets the header info
     csv_header = next(csvreader)
 
+    # initialize variables using first row of data
     first_row = next(csvreader)
-    # initialize these variables
+    
     greatest_profit = int(first_row[1])
     greatest_loss = int(first_row[1])
+    total_months = 1
+    total_profit = int(first_row[1])
 
     # Loops through the rows
     for row in csvreader:
@@ -35,7 +36,7 @@ with open(csvpath) as csvfile:
             greatest_loss = current_profit
             loss_month = row[0]
          
-    average_change = round(total_profit / total_months, 2)    # im pretty sure this is correct
+    average_change = round(total_profit / total_months, 2)    
     
 
 print(f"Total months: {total_months}")
